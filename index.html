@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Weather | Premium Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-sunny">
+    <div class="app-container">
+        <header>
+            <div class="search-container">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="city-input" placeholder="Şehir ara..." autocomplete="off">
+                <button id="search-btn">Bul</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="current-weather glass">
+                <div class="weather-main-info">
+                    <div class="location">
+                        <i data-lucide="map-pin"></i>
+                        <span id="city-name">İstanbul</span>
+                    </div>
+                    <div class="date" id="current-date">Salı, 7 Nisan</div>
+                    <div class="temp-container">
+                        <h1 id="temperature">24°</h1>
+                        <p id="weather-description">Güneşli</p>
+                    </div>
+                </div>
+                <div class="weather-visual">
+                    <div class="aura-icon" id="main-icon">
+                        <i data-lucide="sun" size="120" stroke-width="1.5" class="sun-icon"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="weather-details">
+                <div class="detail-card glass">
+                    <i data-lucide="droplets"></i>
+                    <div class="detail-info">
+                        <span>Nem</span>
+                        <h3 id="humidity">45%</h3>
+                    </div>
+                </div>
+                <div class="detail-card glass">
+                    <i data-lucide="wind"></i>
+                    <div class="detail-info">
+                        <span>Rüzgar</span>
+                        <h3 id="wind-speed">12 km/s</h3>
+                    </div>
+                </div>
+                <div class="detail-card glass">
+                    <i data-lucide="eye"></i>
+                    <div class="detail-info">
+                        <span>Görüş</span>
+                        <h3 id="visibility">10 km</h3>
+                    </div>
+                </div>
+                <div class="detail-card glass">
+                    <i data-lucide="thermometer"></i>
+                    <div class="detail-info">
+                        <span>Hissedilen</span>
+                        <h3 id="feels-like">26°</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="forecast glass">
+                <h2>Haftalık Tahmin</h2>
+                <div class="forecast-grid" id="forecast-grid">
+                    <!-- Dinamik olarak dolacak -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Aura Weather | Made with ✨</p>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
