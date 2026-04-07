@@ -25,10 +25,21 @@ async function fetchWeather(city) {
         const response = await fetch(`https://wttr.in/${city}?format=j1`);
         if (!response.ok) throw new Error('Şehir bulunamadı');
         const data = await response.json();
+        
+        // Şehir doğrulama: API bazen en yakın yeri döner. 
+        // Eğer aranan kelime sonuçlardaki şehir veya ülke adında hiç geçmiyorsa hata verelim.
+        const foundCity = data.nearest_area[0].areaName[0].value.toLowerCase();
+        const foundCountry = data.nearest_area[0].country[0].value.toLowerCase();
+        const searchInput = city.toLowerCase();
+
+        if (!foundCity.includes(searchInput) && !foundCountry.includes(searchInput)) {
+            throw new Error('Geçersiz şehir');
+        }
+
         updateUI(data, city);
     } catch (error) {
         console.error('Error fetching weather:', error);
-        alert('Hava durumu bilgisi alınamadı. Lütfen geçerli bir şehir adı girin.');
+        alert('Maalesef bu şehri bulamadık. Lütfen yazımı kontrol et kanka! 😅');
     }
 }
 
